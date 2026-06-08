@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Details - PIYUSH WORLD</title>
+
+<style>
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#0d1117;
+color:white;
+padding-top:90px;
+display:flex;
+justify-content:center;
+animation:fadePage 1s ease;
+}
+
+@keyframes fadePage{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* NAVBAR */
+
+#navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:70px;
+background:#1e3a2a;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+z-index:999;
+}
+
+.logo{
+color:#fbbf24;
+font-size:24px;
+font-weight:900;
+}
+
+.back-btn{
+padding:8px 15px;
+background:#f59e0b;
+color:#1e3a2a;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.back-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 10px #f59e0b;
+}
+
+/* FORM CONTAINER */
+
+.order-container{
+
+background:#111827;
+
+width:90%;
+max-width:600px;
+
+padding:30px;
+
+border-radius:12px;
+
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+
+animation:slideUp 0.8s ease;
+
+}
+
+@keyframes slideUp{
+
+from{opacity:0; transform:translateY(40px);}
+
+to{opacity:1; transform:translateY(0);}
+
+}
+
+.order-title{
+
+text-align:center;
+
+font-size:32px;
+
+margin-bottom:25px;
+
+color:#f59e0b;
+
+}
+
+/* FORM */
+
+form{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+label{
+
+font-size:14px;
+
+text-align:left;
+
+}
+
+input, select{
+
+padding:10px;
+
+border:none;
+
+border-radius:6px;
+
+outline:none;
+
+font-size:14px;
+
+}
+
+/* ADDRESS GRID */
+
+.address-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+}
+
+/* BUTTON */
+
+.submit-btn{
+
+margin-top:10px;
+
+padding:12px;
+
+background:linear-gradient(90deg,#f59e0b,#e63946);
+
+border:none;
+
+border-radius:6px;
+
+font-weight:bold;
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.submit-btn:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 10px #f59e0b;
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.address-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.order-title{
+
+font-size:26px;
+
+}
+
+}
+
+</style>
+
+<script>
+
+function placeOrder(){
+
+let name=document.getElementById("name").value
+
+let mobile=document.getElementById("mobile").value
+
+let payment=document.getElementById("payment").value
+
+if(name=="" || mobile==""){
+
+alert("Please fill all required details")
+
+return
+
+}
+
+alert(
+
+"🎉 Order Placed Successfully!\n\n"+
+
+"Name: "+name+
+
+"\nMobile: "+mobile+
+
+"\nPayment: "+payment+
+
+"\n\nThank you for ordering from PIYUSH WORLD!"
+
+)
+
+document.getElementById("orderForm").reset()
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div id="navbar">
+
+<div class="logo">PIYUSH WORLD</div>
+
+<button class="back-btn" onclick="window.location.href='index.html'">
+
+⬅ Back
+
+</button>
+
+</div>
+
+
+<!-- ORDER FORM -->
+
+<div class="order-container">
+
+<h2 class="order-title">Delivery Details</h2>
+
+<form id="orderForm">
+
+<label>Full Name *</label>
+
+<input type="text" id="name" placeholder="Enter your name" required>
+
+
+<label>Mobile Number *</label>
+
+<input type="tel" id="mobile" placeholder="Enter mobile number" required>
+
+
+<label>Alternate Mobile Number</label>
+
+<input type="tel" placeholder="Alternate number">
+
+
+<label>Village</label>
+
+<input type="text" placeholder="Village name">
+
+
+<div class="address-grid">
+
+<div>
+
+<label>Post</label>
+
+<input type="text" placeholder="Post">
+
+</div>
+
+<div>
+
+<label>PIN Code</label>
+
+<input type="number" placeholder="PIN code">
+
+</div>
+
+</div>
+
+
+<label>Payment Method</label>
+
+<select id="payment">
+
+<option>Cash on Delivery</option>
+
+<option>UPI</option>
+
+<option>Credit Card</option>
+
+<option>Debit Card</option>
+
+</select>
+
+
+<button type="button" class="submit-btn" onclick="placeOrder()">
+
+Place Order
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
